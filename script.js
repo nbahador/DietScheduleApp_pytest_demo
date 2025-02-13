@@ -1,4 +1,4 @@
-document.getElementById('diet-form').addEventListener('submit', function(e) {
+document.getElementById('diet-form').addEventListener('submit', function (e) {
     e.preventDefault();
 
     // Collect input values
@@ -9,7 +9,7 @@ document.getElementById('diet-form').addEventListener('submit', function(e) {
     const country = document.getElementById('country').value;
     const activityLevel = document.getElementById('activity-level').value;
 
-    // Fetch weather data for the country (This is a placeholder)
+    // Simulate fetching weather data based on the country (this is just a placeholder)
     fetchWeather(country).then(weather => {
         // Calculate the diet and nutritional needs
         const diet = generateDiet(age, weight, height, season, weather, activityLevel);
@@ -60,7 +60,7 @@ function generateDiet(age, weight, height, season, weather, activityLevel) {
     };
 }
 
-// Fetch weather data (this function is a placeholder and will return 'hot' weather)
+// Simulate fetching weather data (this function is a placeholder and will return 'hot' weather)
 function fetchWeather(country) {
     return new Promise((resolve) => {
         setTimeout(() => {
