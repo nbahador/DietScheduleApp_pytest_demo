@@ -1,6 +1,7 @@
 document.getElementById('diet-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
+    // Collect input values
     const age = parseInt(document.getElementById('age').value);
     const weight = parseInt(document.getElementById('weight').value);
     const height = parseInt(document.getElementById('height').value);
@@ -8,12 +9,12 @@ document.getElementById('diet-form').addEventListener('submit', function(e) {
     const country = document.getElementById('country').value;
     const activityLevel = document.getElementById('activity-level').value;
 
-    // Fetch weather data for the country
+    // Fetch weather data for the country (This is a placeholder)
     fetchWeather(country).then(weather => {
-        // Calculate the diet based on user inputs
+        // Calculate the diet and nutritional needs
         const diet = generateDiet(age, weight, height, season, weather, activityLevel);
-        
-        // Display the diet schedule
+
+        // Display the results
         displayDiet(diet);
     });
 });
@@ -41,7 +42,7 @@ function generateDiet(age, weight, height, season, weather, activityLevel) {
     const fatIntake = totalCalories * 0.25 / 9; // 25% of calories from fat
     const carbIntake = (totalCalories - (proteinIntake * 4 + fatIntake * 9)) / 4; // The rest from carbs
 
-    // Seasonal diet recommendations (could be more elaborate based on needs)
+    // Seasonal diet recommendations (example)
     let seasonalDiet = '';
     if (season === 'summer' && weather === 'hot') {
         seasonalDiet = 'Light meals, fruits, and hydrating foods.';
@@ -49,7 +50,7 @@ function generateDiet(age, weight, height, season, weather, activityLevel) {
         seasonalDiet = 'Warm meals, soups, and hearty foods.';
     }
 
-    // Returning the diet information
+    // Returning the diet information in an object
     return {
         totalCalories: Math.round(totalCalories),
         protein: Math.round(proteinIntake),
@@ -59,16 +60,16 @@ function generateDiet(age, weight, height, season, weather, activityLevel) {
     };
 }
 
+// Fetch weather data (this function is a placeholder and will return 'hot' weather)
 function fetchWeather(country) {
-    // Placeholder function for fetching weather data
-    // You can replace this with an actual weather API such as OpenWeatherMap
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve('hot'); // Dummy response for hot weather
+            resolve('hot'); // Placeholder response for hot weather
         }, 1000);
     });
 }
 
+// Displaying the diet plan with macronutrient info
 function displayDiet(diet) {
     const dietSchedule = document.getElementById('diet-schedule');
     dietSchedule.innerHTML = `
