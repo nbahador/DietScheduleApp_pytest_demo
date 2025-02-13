@@ -69,15 +69,37 @@ function fetchWeather(country) {
     });
 }
 
-// Displaying the diet plan with macronutrient info
+// Displaying the diet plan with macronutrient info in a beautiful table
 function displayDiet(diet) {
     const dietSchedule = document.getElementById('diet-schedule');
     dietSchedule.innerHTML = `
         <h2>Your Personalized Diet Plan</h2>
-        <p><strong>Daily Calories:</strong> ${diet.totalCalories} kcal</p>
-        <p><strong>Protein Intake:</strong> ${diet.protein} grams</p>
-        <p><strong>Fat Intake:</strong> ${diet.fats} grams</p>
-        <p><strong>Carbohydrate Intake:</strong> ${diet.carbs} grams</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Amount (Per Day)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Total Calories</td>
+                    <td>${diet.totalCalories} kcal</td>
+                </tr>
+                <tr>
+                    <td>Protein Intake</td>
+                    <td>${diet.protein} grams</td>
+                </tr>
+                <tr>
+                    <td>Fat Intake</td>
+                    <td>${diet.fats} grams</td>
+                </tr>
+                <tr>
+                    <td>Carbohydrate Intake</td>
+                    <td>${diet.carbs} grams</td>
+                </tr>
+            </tbody>
+        </table>
         <p><strong>Seasonal Diet Suggestion:</strong> ${diet.seasonalDiet}</p>
     `;
 }
