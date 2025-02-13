@@ -1,0 +1,10 @@
+{
+    "summer": {
+        "hot": "Light meals, fruits, and hydrating foods.",
+        "cold": "Cool salads and refreshing drinks."
+    },
+    "winter": {
+        "hot": "Warm meals, soups, and hearty foods.",
+        "cold": "Heavy meals with more protein."
+    }
+}
