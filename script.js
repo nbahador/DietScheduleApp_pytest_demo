@@ -2,12 +2,17 @@ document.getElementById('diet-form').addEventListener('submit', function (e) {
     e.preventDefault();
 
     // Collect input values
-    const age = parseInt(document.getElementById('age').value);
-    const weight = parseInt(document.getElementById('weight').value);
-    const height = parseInt(document.getElementById('height').value);
+    const age = document.getElementById('age').value;
+    const weight = document.getElementById('weight').value;
+    const height = document.getElementById('height').value;
     const season = document.getElementById('season').value;
     const country = document.getElementById('country').value;
     const activityLevel = document.getElementById('activity-level').value;
+
+    // Validate inputs (type & range)
+    if (!validateInputs(age, weight, height)) {
+        return; // Stop further processing if input is invalid
+    }
 
     // Simulate fetching weather data based on the country (this is just a placeholder)
     fetchWeather(country).then(weather => {
@@ -67,6 +72,26 @@ function fetchWeather(country) {
             resolve('hot'); // Placeholder response for hot weather
         }, 1000);
     });
+}
+
+// Function to validate inputs (age, weight, height)
+function validateInputs(age, weight, height) {
+    // Validate age
+    if (isNaN(age) || age <= 0 || age > 120) {
+        alert("Please enter a valid age (between 1 and 120).");
+        return false;
+    }
+    // Validate weight
+    if (isNaN(weight) || weight <= 0 || weight > 300) {
+        alert("Please enter a valid weight (between 1 and 300kg).");
+        return false;
+    }
+    // Validate height
+    if (isNaN(height) || height <= 0 || height > 250) {
+        alert("Please enter a valid height (between 1 and 250cm).");
+        return false;
+    }
+    return true;
 }
 
 // Displaying the diet plan with macronutrient info in a beautiful table
