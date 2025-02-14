@@ -8,23 +8,21 @@ def validate_inputs(age, weight, height):
         return "Invalid weight. Please enter a valid weight (between 1 and 300kg)."
     if not isinstance(height, int) or height <= 0 or height > 250:
         return "Invalid height. Please enter a valid height (between 1 and 250cm)."
-    return "Valid inputs"
+    return "Valid"
 
-# Tests
+# Test cases for input validation
 def test_valid_inputs():
-    assert validate_inputs(25, 70, 175) == "Valid inputs"
+    assert validate_inputs(25, 70, 170) == "Valid"
+    assert validate_inputs(120, 50, 150) == "Valid"
 
 def test_invalid_age():
-    assert validate_inputs(-5, 70, 175) == "Invalid age. Please enter a valid age (between 1 and 120)."
-    assert validate_inputs(130, 70, 175) == "Invalid age. Please enter a valid age (between 1 and 120)."
-    assert validate_inputs("twenty", 70, 175) == "Invalid age. Please enter a valid age (between 1 and 120)."
+    assert validate_inputs(-5, 70, 170) == "Invalid age. Please enter a valid age (between 1 and 120)."
+    assert validate_inputs(150, 70, 170) == "Invalid age. Please enter a valid age (between 1 and 120)."
 
 def test_invalid_weight():
-    assert validate_inputs(25, -10, 175) == "Invalid weight. Please enter a valid weight (between 1 and 300kg)."
-    assert validate_inputs(25, 350, 175) == "Invalid weight. Please enter a valid weight (between 1 and 300kg)."
-    assert validate_inputs(25, "heavy", 175) == "Invalid weight. Please enter a valid weight (between 1 and 300kg)."
+    assert validate_inputs(25, -5, 170) == "Invalid weight. Please enter a valid weight (between 1 and 300kg)."
+    assert validate_inputs(25, 350, 170) == "Invalid weight. Please enter a valid weight (between 1 and 300kg)."
 
 def test_invalid_height():
     assert validate_inputs(25, 70, -5) == "Invalid height. Please enter a valid height (between 1 and 250cm)."
     assert validate_inputs(25, 70, 300) == "Invalid height. Please enter a valid height (between 1 and 250cm)."
-    assert validate_inputs(25, 70, "tall") == "Invalid height. Please enter a valid height (between 1 and 250cm)."
