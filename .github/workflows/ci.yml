@@ -3,7 +3,7 @@ name: Automated Testing for Diet Plan
 on:
   push:
     branches:
-      - main  # Runs when you push to the 'main' branch (change this if you use a different default branch)
+      - main  # Runs when you push to the 'main' branch (adjust this if necessary)
   pull_request:
     branches:
       - main  # Runs on pull requests targeting the 'main' branch
@@ -13,31 +13,16 @@ jobs:
     runs-on: ubuntu-latest  # GitHub Actions will run on a Linux virtual machine
 
     steps:
-    - name: Checkout the code
-      uses: actions/checkout@v2  # Checkout the code in the repository
+    - name: Checkout code
+      uses: actions/checkout@v2  # Checks out your repository
 
-    - name: Set up Node.js (for Jest testing)
+    - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
         node-version: '14'  # Choose a Node version (make sure it matches your requirements)
 
     - name: Install dependencies
-      run: npm install  # This will install your project's dependencies (ensure Jest or any other dependencies are listed in package.json)
+      run: npm install  # Installs dependencies defined in the package.json
 
-    - name: Run tests with Jest
-      run: npm test  # Runs the Jest tests (make sure to set up Jest in your repository)
-
-    - name: Set up Selenium (if you're using Selenium)
-      uses: actions/setup-chromedriver@v2  # This will automatically set up ChromeDriver for Selenium tests
-      
-    - name: Run Selenium tests
-      run: |
-        # Install necessary dependencies
-        sudo apt-get update
-        sudo apt-get install -y python3 python3-pip
-        pip install selenium pytest  # Install Selenium and pytest if not already installed
-        pytest test_input_validation.py  # Run your pytest test file (you may need to adjust the filename)
-      
-    - name: Deploy to GitHub Pages (Optional)
-      run: |
-        # Ensure the code is deployed to GitHub Pages (if needed, you can set up a deployment step here)
+    - name: Run Jest tests
+      run: npm test  # Runs Jest tests defined in the "test" script in package.json
