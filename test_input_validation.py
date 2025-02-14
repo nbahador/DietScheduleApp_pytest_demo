@@ -1,6 +1,6 @@
 import pytest
 
-# Input validation function (simulate the JavaScript validation)
+# Input validation function (from JS to Python simulation)
 def validate_inputs(age, weight, height):
     if not isinstance(age, int) or age <= 0 or age > 120:
         return "Invalid age. Please enter a valid age (between 1 and 120)."
@@ -10,7 +10,6 @@ def validate_inputs(age, weight, height):
         return "Invalid height. Please enter a valid height (between 1 and 250cm)."
     return "Valid"
 
-# Test cases for input validation
 def test_valid_inputs():
     assert validate_inputs(25, 70, 170) == "Valid"
     assert validate_inputs(120, 50, 150) == "Valid"
