@@ -4,4 +4,4 @@ Welcome to the Personalized Diet Plan App! You can use this app to generate a pe
 
 ### Try the app here:
 
-[Click here to open the app!](https://nbahador.github.io/DietScheduleApp_pytest_demo/)
+[Click here to open the app!](https://nbahador.github.io/Diet_Schedule_App/)
