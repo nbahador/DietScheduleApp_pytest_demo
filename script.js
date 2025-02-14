@@ -1,5 +1,5 @@
 document.getElementById('diet-form').addEventListener('submit', function (e) {
-    e.preventDefault();
+    e.preventDefault(); // Prevent form submission to check inputs
 
     // Collect input values
     const age = document.getElementById('age').value;
@@ -10,7 +10,9 @@ document.getElementById('diet-form').addEventListener('submit', function (e) {
     const activityLevel = document.getElementById('activity-level').value;
 
     // Validate inputs (type & range)
-    if (!validateInputs(age, weight, height)) {
+    const validationError = validateInputs(age, weight, height);
+    if (validationError) {
+        alert(validationError);
         return; // Stop further processing if input is invalid
     }
 
@@ -78,20 +80,17 @@ function fetchWeather(country) {
 function validateInputs(age, weight, height) {
     // Validate age
     if (isNaN(age) || age <= 0 || age > 120) {
-        alert("Please enter a valid age (between 1 and 120).");
-        return false;
+        return "Please enter a valid age (between 1 and 120).";
     }
     // Validate weight
     if (isNaN(weight) || weight <= 0 || weight > 300) {
-        alert("Please enter a valid weight (between 1 and 300kg).");
-        return false;
+        return "Please enter a valid weight (between 1 and 300kg).";
     }
     // Validate height
     if (isNaN(height) || height <= 0 || height > 250) {
-        alert("Please enter a valid height (between 1 and 250cm).");
-        return false;
+        return "Please enter a valid height (between 1 and 250cm).";
     }
-    return true;
+    return null; // No error
 }
 
 // Displaying the diet plan with macronutrient info in a beautiful table
