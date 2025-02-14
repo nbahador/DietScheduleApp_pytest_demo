@@ -1,0 +1,12 @@
+{
+  "name": "diet-plan-validator",
+  "version": "1.0.0",
+  "description": "Personalized Diet Plan Generator with input validation.",
+  "main": "index.html",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^27.4.3"
+  }
+}
